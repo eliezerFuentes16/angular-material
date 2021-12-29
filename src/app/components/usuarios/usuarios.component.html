@@ -1,0 +1,120 @@
+
+<div class="div-container"> 
+    <h1 class="text-center">Agregar Usuario</h1>  
+    <mat-card>
+        <div>
+            <form [formGroup]="form" (ngSubmit)="agregarUsuario()">
+                <mat-grid-list cols="4" rowHeight="70px">
+                    <mat-grid-tile [colspan]="2" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>Usuario</mat-label>
+                            <input matInput autocomplete="off" formControlName="usuario">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <!-- <mat-grid-tile [colspan]="3" [rowspan]="5" >
+                        <img src="../../../assets/img/programador.png" width="250px" height="250px">
+                    </mat-grid-tile> -->
+                    <input type="hidden" [(ngModel)]="valorInput">
+                    <mat-grid-tile [colspan]="2" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>Nombre</mat-label>
+                            <input matInput autocomplete="off" formControlName="nombre">
+                        </mat-form-field>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile [colspan]="2" [rowspan]="1" >
+                        <mat-form-field class="ancho">
+                            <mat-label>Apellido</mat-label>
+                            <input matInput autocomplete="off" formControlName="apellido">
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="2" [rowspan]="1" >
+                        
+                        <mat-form-field class="ancho m-auto">
+                            <mat-label>Sexo</mat-label>
+                            <mat-select [disabled]="disableSelect.value" formControlName="sexo">
+                                <mat-option value="Masculino">Masculino</mat-option>
+                                <mat-option value="Femenino">Femenino</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        
+                    </mat-grid-tile>
+                    <mat-grid-tile [colspan]="4" [rowspan]="1" >
+                        <button mat-raised-button color="primary" 
+                        class="btn-agregar" routerLink="/dashboard/agregar-usuario">
+                        Agregar Usuario
+                    </button>
+
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </form>
+        </div>
+        
+    </mat-card>
+</div>
+
+
+<div class="div-table">
+    <div class="div-crear-buscar">   
+        <mat-form-field appearance="standard" style="width:100%">
+            <mat-label>Buscar</mat-label>
+            <input matInput (keyup)="Filtrar($event)" placeholder=" " #input autocomplete="off" >
+        </mat-form-field>
+      <!-- ------------------------------------ -->
+        <!-- <button mat-raised-button color="primary" class="btn-agregar" routerLink="/dashboard/agregar-usuario">Agregar</button> -->
+    </div>
+    <div  class="mat-elevation-z8">
+          
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- mat-sort-header -->
+            <ng-container matColumnDef="usuario">
+            <th mat-header-cell *matHeaderCellDef > Usuario </th>
+            <td mat-cell *matCellDef="let element"> {{element.usuario}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+        
+            <!-- Weight Column -->
+            <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+            <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+            </ng-container>
+        
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="sexo">
+            <th mat-header-cell *matHeaderCellDef> Sexo </th>
+            <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                <td mat-cell *matCellDef="let element let i = index" class="td-operaciones"> 
+                    <span>
+
+                        <a class="edit" matTooltip="Editar Usuario"
+                        aria-label="Editar Usuario" (click)="editarUsuario(i)">
+                            <mat-icon>edit</mat-icon>
+                        </a> 
+                        <a class="delete" matTooltip="Borrar Usuario"
+                        aria-label="Borrar Usuario" (click)="borrarUsuario(i)">
+                            <mat-icon>delete</mat-icon>
+                        </a> 
+                    </span>
+                </td>
+                </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [length]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page">
+        </mat-paginator>
+    </div>
+</div>

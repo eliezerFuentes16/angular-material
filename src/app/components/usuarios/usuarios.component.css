@@ -1,0 +1,69 @@
+.div-table{
+    width:90%;
+    margin:auto;
+    margin-top:20px;
+    padding-bottom:20px
+}
+
+.div-crear-buscar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-agregar{
+    height: 40px;
+}
+
+table{
+    width:100%
+}
+
+table td, table th{
+    text-align:center
+}
+
+.td-operaciones span{
+   display:flex;
+   justify-content: space-between;
+   max-width:120px;
+   margin:auto
+}
+
+.td-operaciones span a{
+    cursor:pointer
+}
+
+.buscar{
+    color:#48e
+}
+
+.edit{
+    color:#1f516f
+}
+
+.delete{
+    color:#e15639
+}
+
+.div-container{
+    width:90%;
+    margin:auto;
+    margin-top:20px;
+}
+
+.ancho{
+    width:80%
+}
+
+.w-100{
+    width:100%
+}
+
+.m-auto{
+    margin:auto
+}
+
+.text-center{
+    text-align: center;
+}
